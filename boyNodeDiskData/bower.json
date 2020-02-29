@@ -1,0 +1,22 @@
+{
+  "name": "boy-diskData",
+  "description": "diskData,One repo of boy distribute modality platform. Support web Intelligent bussiness-data storage functions to support entire platform's workflow,bussiness logic running and so on.",
+  "main": "webApi/diskDataEntry.js",
+  "authors": [
+    "boybian <coldboardcoldtree@126.com>"
+  ],
+  "license": "MPL(Mozilla Public License1.1)",
+  "keywords": [
+    "database",
+    "distribute database",
+    "分布式数据"
+  ],
+  "homepage": "https://github.com/boyplatform/diskData",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

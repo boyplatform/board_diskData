@@ -1,0 +1,83 @@
+{
+  "name": "memory",
+  "version": "1.0.0",
+  "description": "memory,One repo of boy distribute modality platform. Support web Intelligent data memory cache functions such as temp cache data storage, data operation of platform level input&output, temp cache/flash data persistance and so on.",
+  "homepage": "https://github.com/boyplatform/memory",
+  "main": "index.js",
+  "files": [
+    "index.js",
+    "src/*",
+    "dist/*",
+    "demo/*"
+  ],
+  "scripts": {
+    "test": "mocha --bail --reporter spec test/mocha_*.js",
+    "test-cov": "istanbul cover node_modules/mocha/bin/_mocha -- --reporter dot test/mocha_*.js",
+    "test-travis": "istanbul cover node_modules/mocha/bin/_mocha --report lcovonly -- --reporter spec test/mocha_*.js",
+    "build": "gulp"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/boyplatform/memory.git"
+  },
+  "keywords": [
+    "memcached",
+    "webCache",
+    "Radis",
+    "node-cache",
+    "net memory",
+    "缓存"
+  ],
+  "dependencies": {
+    "async-lock": "^1.1.4",
+    "bluebird": "^3",
+    "co": "^4.6.0",
+    "date-utils": "^1.2.21",
+    "deasync": "^0.1.15",
+    "debug": "^4.1.0",
+    "easy-promise": "^0.0.4",
+    "express": "^4.15.3",
+    "express-generator": "^4.15.0",
+    "extend-promise": "^0.0.6",
+    "formidable": "^1.1.1",
+    "ioredis": "^4.14.1",
+    "lodash": "^4.17.11",
+    "log4js": "^5.2.2",
+    "memcached": "^2.2.2",
+    "mssql": "^4.0.4",
+    "mysql": "^2.11.1",
+    "mysql-dbhelper": "^0.3.2",
+    "node-cmd": "^3.0.0",
+    "node-uuid": "^1.0.0",
+    "request": "^2.88.0",
+    "request-promise-native": "^1.0.5",
+    "thunkify": "^2.1.2",
+    "validator": "^11.1.0"
+  },
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "crypto": "^1.0.1",
+    "express": "^4.12.3",
+    "generic-pool": "^3.7.1",
+    "gulp": "^3.9.1",
+    "gulp-browserify": "^0.5.1",
+    "gulp-header": "^1.8.8",
+    "gulp-istanbul": "^1.1.1",
+    "gulp-mocha": "^3.0.1",
+    "gulp-rename": "^1.2.2",
+    "gulp-uglify": "^2.0.0",
+    "istanbul": "0.3.15",
+    "memcached": "^2.2.2",
+    "mocha": "^2.5.3",
+    "moment": "^2.12.0",
+    "path": "^0.12.7",
+    "q": "*",
+    "redis": "^2.5.3",
+    "request": "*"
+  },
+  "author": {
+    "name": "boybian",
+    "email": "coldboardcoldtree@126.com"
+  },
+  "license": "MPL(Mozilla Public License1.1)"
+}
