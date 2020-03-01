@@ -127,7 +127,7 @@ var platformArch= {
        appGuid:'',
        reqStorageClusterType:0
      },
-     runningMode:"mock",  //mock-for test via API or realCluster-for work with memory cluster together.
+     runningMode:"realCluster",  //mock-for test via API or realCluster-for work with memory cluster together.
      redisMode:"cluster",
      NonBlockChainSubscribeChannel:"NONBLOCKCHAINWRITE"
 };
