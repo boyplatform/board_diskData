@@ -679,7 +679,7 @@ DiskDataNodeInfoRecord.prototype.copyOperationLogFromOperationLogLanding=functio
 DiskDataNodeInfoRecord.prototype.showDataBases=function(callBack){
     
     this.DiskDataDb.dbType = 'mysql';
-    this.DiskDataDb.mysqlParameter.common.dbConf=conf.mysqlConfig; 
+    this.DiskDataDb.mysqlParameter.common.dbConf=conf.diskDataDBConf; 
     this.DiskDataDb.mysqlParameter.common.sql ="show databases";
     this.DiskDataDb.mysqlParameter.common.params=[""];
     this.DiskDataDb.mysqlParameter.common.callBack = function (err, rows) {
@@ -700,7 +700,7 @@ DiskDataNodeInfoRecord.prototype.showDataBases=function(callBack){
 
 DiskDataNodeInfoRecord.prototype.showTablesBaseOnDBName=function(DbName,callBack){
     this.DiskDataDb.dbType = 'mysql';
-    this.DiskDataDb.mysqlParameter.common.dbConf=conf.mysqlConfig; 
+    this.DiskDataDb.mysqlParameter.common.dbConf=conf.diskDataDBConf; 
     this.DiskDataDb.mysqlParameter.common.sql ="select TABLE_NAME from information_schema.TABLES where TABLE_SCHEMA=?";
     this.DiskDataDb.mysqlParameter.common.params=[DbName];
     this.DiskDataDb.mysqlParameter.common.callBack = function (err, rows) {
