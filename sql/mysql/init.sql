@@ -15,7 +15,9 @@ create table RequestLog
    url                  text,
    createTime           timestamp default CURRENT_TIMESTAMP,
    reqStorageClusterType int comment '0=mysql
-            1=others',
+            1=mssql
+            2=db2
+            3=oracle',
    reqGuid              varchar(255),
    isActive             bit default 1 comment 'false=not active
             true=active',
@@ -25,12 +27,13 @@ create table RequestLog
    isConfirmedByMaster  bit default false,
    isSentToMaster       bit default false,
    targetDbName         varchar(166),
-   sendToMasterTime     timestamp default CURRENT_TIMESTAMP,
+   sendToMasterTime     timestamp,
    confirmedByMasterIp  varchar(255),
    primary key (reqId)
 );
 
 alter table RequestLog comment 'The Sql Execution req from Memory.';
+
 
 drop table if exists operationLog;
 
@@ -86,8 +89,8 @@ create table operationLogSummarySha
 (
    shaCheckId           bigint not null auto_increment comment 'block check ID',
    latestCheckOperationSha varchar(166),
-   createTime           timestamp,
    updateTime           timestamp default CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+   createTime           timestamp,
    isConfirmedByMaster  bit default 0,
    notMatchedCount      bigint default 0,
    shaCheckGuid         varchar(255),
@@ -98,6 +101,7 @@ create table operationLogSummarySha
    confirmedByMasterIp  varchar(255),
    primary key (shaCheckId)
 );
+
 
 drop table if exists operationLogShadow;
 
