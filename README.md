@@ -11,4 +11,4 @@ diskData,One repo of boy distribute modality platform. Implement web Intelligent
 3.The diskData role of boyplatform just like gum-water of your distributed database-service nodes which may be set under any cloud provider such as AWS,AZURE,Aliyun and so on.
 
 #Current bussiness DB type supported by this micro-service role
-MySql 
+MySql,MsSql 

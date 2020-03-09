@@ -481,8 +481,9 @@ DeamonThreads.prototype.getCurrentNodeRole=function(callback){
         'type':'seekMasterNodeVoteResult'  
     };
     DiskDataHttpHelper.apiSimpleRequestWithCallBack(conf.platformArch.crystalCluster.httpDefaultMode,domainUrl,partialUrl,qs,body,timeout,function(res){
-          //verify whether current node ip===other voted crystal cluster master node
-          if(diskDataCommon.getCurrentServerIpAdress().trim()===res.crystalNodeIp.trim()){
+        
+         //verify whether current node ip===other voted crystal cluster master node
+          if(res!==undefined&&diskDataCommon.getCurrentServerIpAdress().trim()===res.crystalNodeIp.trim()){
                //if ture return 'm' as master role
               callback("m");
           }else{

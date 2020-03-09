@@ -50,6 +50,22 @@ var diskDataDBConf = {
    debug: false
 };
 
+var diskDataDBConf_Mssql = {
+   user: 'sa',
+   password: 'whoisboy',
+   server: 'localhost',
+   database: 'efcoreTest',
+   port: 1433,
+   options: {
+   encrypt: false // Use this if you're on Windows Azure=true
+   }, 
+   pool: {
+       min: 0,
+       max: 300,
+       idleTimeoutMillis: 3000
+   }
+};
+
 var memCachedPoolConfig={
    'host': ['192.168.125.132:11166','192.168.125.133:11166'],
    'connectionLimit': '66',
@@ -125,7 +141,7 @@ var platformArch= {
        appId:0,
        appName:'',
        appGuid:'',
-       reqStorageClusterType:0
+       reqStorageClusterType:0  //0=used to host mysql cluster;1=used to host mssql cluster
      },
      runningMode:"realCluster",  //mock-for test via API or realCluster-for work with memory cluster together.
      redisMode:"cluster",
@@ -138,4 +154,5 @@ exports.platformArch=platformArch;
 exports.redisPoolConfig=redisPoolConfig;
 exports.memCachedPoolConfig=memCachedPoolConfig;
 exports.diskDataDBConf=diskDataDBConf;
+exports.diskDataDBConf_Mssql=diskDataDBConf_Mssql;
 exports.redisClusterPoolConfig=redisClusterPoolConfig;

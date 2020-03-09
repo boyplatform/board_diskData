@@ -95,16 +95,16 @@ var server=app.listen(8080,'0.0.0.0',function(){
                
                if(rows!==undefined){
                   for(let row of rows){
-                  
-                     dataOperaSyncRules_decideAndAction.getWriteOperationMessageStart(row.Database.toString().toUpperCase(),conf.platformArch.serviceFor.appId,conf.platformArch.serviceFor.appName,conf.platformArch.serviceFor.appGuid,conf.platformArch.serviceFor.reqStorageClusterType);
+                   
+                        dataOperaSyncRules_decideAndAction.getWriteOperationMessageStart(row.Database.toString().toUpperCase()+conf.platformArch.serviceFor.reqStorageClusterType.toString(),conf.platformArch.serviceFor.appId,conf.platformArch.serviceFor.appName,conf.platformArch.serviceFor.appGuid,conf.platformArch.serviceFor.reqStorageClusterType);
                   }
                }
-            });
+            },conf.platformArch.serviceFor.reqStorageClusterType);
              //start operationLog block check processing
              
 
         //订阅非block chain的直接操作
-            dataOperaSyncRules_decideAndAction.getWriteOperationMessageStart(conf.platformArch.NonBlockChainSubscribeChannel.toUpperCase(),conf.platformArch.serviceFor.appId,conf.platformArch.serviceFor.appName,conf.platformArch.serviceFor.appGuid,conf.platformArch.serviceFor.reqStorageClusterType);
+            dataOperaSyncRules_decideAndAction.getWriteOperationMessageStart(conf.platformArch.NonBlockChainSubscribeChannel.toUpperCase()+conf.platformArch.serviceFor.reqStorageClusterType.toString(),conf.platformArch.serviceFor.appId,conf.platformArch.serviceFor.appName,conf.platformArch.serviceFor.appGuid,conf.platformArch.serviceFor.reqStorageClusterType);
       }
         
         //共识数据订阅与同步处理相关线程   
@@ -209,7 +209,7 @@ app.post('/getDiskData',async function(req,res){
          }
 
          res.end(JSON.stringify(result));
-      });
+      },conf.platformArch.serviceFor.reqStorageClusterType);
 
 })
 

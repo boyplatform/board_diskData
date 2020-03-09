@@ -284,7 +284,7 @@ function DecideAndAction(){
                                                                                                                     }
 
 
-                                                                                                                }.bind(this));
+                                                                                                                }.bind(this),row.operationStorageClusterType);
                                                                                                             }
 
                                                                                                             
@@ -301,7 +301,7 @@ function DecideAndAction(){
                                                                                     }
                                                                                 }
                                                                                 
-                                                                            }.bind(this))
+                                                                            }.bind(this),conf.platformArch.serviceFor.reqStorageClusterType)
                                                                               
                                                                           }
                                                                      }.bind(this));

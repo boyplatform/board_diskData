@@ -676,46 +676,86 @@ DiskDataNodeInfoRecord.prototype.copyOperationLogFromOperationLogLanding=functio
 }
 
 
-DiskDataNodeInfoRecord.prototype.showDataBases=function(callBack){
-    
-    this.DiskDataDb.dbType = 'mysql';
-    this.DiskDataDb.mysqlParameter.common.dbConf=conf.diskDataDBConf; 
-    this.DiskDataDb.mysqlParameter.common.sql ="show databases";
-    this.DiskDataDb.mysqlParameter.common.params=[""];
-    this.DiskDataDb.mysqlParameter.common.callBack = function (err, rows) {
-      
-        if(err)
-        {
-              console.dir(err);  
-              callBack(undefined);
-        }else
-        {
-            callBack(rows);
+DiskDataNodeInfoRecord.prototype.showDataBases=function(callBack,reqStorageClusterType){
+    if(reqStorageClusterType.toString()==="0"){
+            
+            this.DiskDataDb.dbType = 'mysql';
+            this.DiskDataDb.mysqlParameter.common.dbConf=conf.diskDataDBConf; 
+            this.DiskDataDb.mysqlParameter.common.sql ="show databases";
+            this.DiskDataDb.mysqlParameter.common.params=[""];
+            this.DiskDataDb.mysqlParameter.common.callBack = function (err, rows) {
+            
+                if(err)
+                {
+                    console.dir(err);  
+                    callBack(undefined);
+                }else
+                {
+                    callBack(rows);
 
-        }
-      
-    };
+                }
+            
+            };
+     }else if(reqStorageClusterType.toString()==="1"){
+            this.DiskDataDb.dbType = 'mssql';
+            this.DiskDataDb.mssqlParameter.common.dbConf=conf.diskDataDBConf_Mssql;
+            this.DiskDataDb.mssqlParameter.common.sql ="SELECT Name as 'Database' FROM Master..SysDatabases ORDER BY Name";
+            this.DiskDataDb.mssqlParameter.common.params="";
+            this.DiskDataDb.mssqlParameter.common.callBack = function (err, result) {
+        
+                if(err)
+                {
+                    console.dir(err);  
+                    callBack(undefined);
+                }else
+                {
+                    callBack(result.recordset);
+
+                }
+            
+            };
+     }
     this.DiskDataDb.querySql();
 }
 
-DiskDataNodeInfoRecord.prototype.showTablesBaseOnDBName=function(DbName,callBack){
-    this.DiskDataDb.dbType = 'mysql';
-    this.DiskDataDb.mysqlParameter.common.dbConf=conf.diskDataDBConf; 
-    this.DiskDataDb.mysqlParameter.common.sql ="select TABLE_NAME from information_schema.TABLES where TABLE_SCHEMA=?";
-    this.DiskDataDb.mysqlParameter.common.params=[DbName];
-    this.DiskDataDb.mysqlParameter.common.callBack = function (err, rows) {
-      
-        if(err)
-        {
-              console.dir(err);  
-              callBack(undefined);
-        }else
-        {
-            callBack(rows);
+DiskDataNodeInfoRecord.prototype.showTablesBaseOnDBName=function(DbName,callBack,reqStorageClusterType){
+    if(reqStorageClusterType.toString()==="0"){
+        this.DiskDataDb.dbType = 'mysql';
+        this.DiskDataDb.mysqlParameter.common.dbConf=conf.diskDataDBConf; 
+        this.DiskDataDb.mysqlParameter.common.sql ="select TABLE_NAME from information_schema.TABLES where TABLE_SCHEMA=?";
+        this.DiskDataDb.mysqlParameter.common.params=[DbName];
+        this.DiskDataDb.mysqlParameter.common.callBack = function (err, rows) {
+        
+            if(err)
+            {
+                console.dir(err);  
+                callBack(undefined);
+            }else
+            {
+                callBack(rows);
 
-        }
-      
-    };
+            }
+        
+        };
+    }else if(reqStorageClusterType.toString()==="1"){
+        this.DiskDataDb.dbType = 'mssql';
+        this.DiskDataDb.mssqlParameter.common.dbConf=conf.diskDataDBConf_Mssql; 
+        this.DiskDataDb.mssqlParameter.common.sql ="Select name as 'TABLE_NAME' FROM SysObjects Where XType='U' orDER BY Name";
+        this.DiskDataDb.mssqlParameter.common.params="";
+        this.DiskDataDb.mssqlParameter.common.callBack = function (err, result) {
+        
+            if(err)
+            {
+                console.dir(err);  
+                callBack(undefined);
+            }else
+            {
+                callBack(result.recordset);
+
+            }
+        
+        };
+    }
     this.DiskDataDb.querySql();
 }
 

@@ -1,8 +1,8 @@
 {
-  "name": "memory",
+  "name": "diskdata",
   "version": "1.0.0",
-  "description": "memory,One repo of boy distribute modality platform. Support web Intelligent data memory cache functions such as temp cache data storage, data operation of platform level input&output, temp cache/flash data persistance and so on.",
-  "homepage": "https://github.com/boyplatform/memory",
+  "description": "diskData,One repo of boy distribute modality platform. Implement web Intelligent & distribute bussiness-data storage functions to host distributed workflow,bussiness logic DB-service nodes into entire platform's diskData cluster and make them work on same page together.",
+  "homepage": "https://github.com/boyplatform/diskData",
   "main": "index.js",
   "files": [
     "index.js",
@@ -18,7 +18,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/boyplatform/memory.git"
+    "url": "https://github.com/boyplatform/diskData.git"
   },
   "keywords": [
     "memcached",
@@ -26,7 +26,8 @@
     "Radis",
     "node-cache",
     "net memory",
-    "缓存"
+    "缓存",
+    "data host shell"
   ],
   "dependencies": {
     "async-lock": "^1.1.4",
@@ -79,5 +80,5 @@
     "name": "boybian",
     "email": "coldboardcoldtree@126.com"
   },
-  "license": "MPL(Mozilla Public License1.1)"
+  "license": "MPL(Mozilla Public License2.0)"
 }

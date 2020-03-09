@@ -42,30 +42,30 @@ DecideAndAction.prototype.getWriteOperationMessageStart=function(targetDbName,ap
     {
 
         //verify whether it's non-blockchain operation
-        if(targetDbName===conf.platformArch.NonBlockChainSubscribeChannel.toUpperCase()){
+        if(targetDbName===conf.platformArch.NonBlockChainSubscribeChannel.toUpperCase()+conf.platformArch.serviceFor.reqStorageClusterType.toString()){
 
                 this.memoryNodeCache.getSubscribeData(targetDbName,function(message){
 
                     console.log("this.nodeRoleRs",this.nodeRoleRs);
-                    var writeSqlSha=diskDataCommon.getSha256(targetDbName+message,conf.platformArch.shaHashLengh);
+                    var writeSqlSha=diskDataCommon.getSha256(reqStorageClusterType.toString()+targetDbName+message,conf.platformArch.shaHashLengh);
                     let dataOperator=new DataOperator();
                         dataOperator.executeWrite(message,function(result){
                                 
                             if(result!=false){
                                 
                                 //add-in log into operationLog
-                                var operationLog=new OperationLog(0,diskDataCommon.getUUID(),null,null,null,diskDataCommon.GetFormatDateFromTimeSpan(Date.now()),conf.platformArch.serviceFor.appId,null,null,null,null,null,null,null,null,null,4,null,
+                                var operationLog=new OperationLog(reqStorageClusterType,diskDataCommon.getUUID(),null,null,null,diskDataCommon.GetFormatDateFromTimeSpan(Date.now()),conf.platformArch.serviceFor.appId,null,null,null,null,null,null,null,null,null,4,null,
                                 conf.platformArch.serviceFor.appGuid,null,writeSqlSha,message);
                                 this.diskDataNodeInfoRecord.operationLogInsert(operationLog);
                             } 
-                        }.bind(this));
+                        }.bind(this),reqStorageClusterType);
                 }.bind(this));
 
         }else{
                 this.memoryNodeCache.getSubscribeData(targetDbName,function(message){
 
                     //change message into sha
-                    var writeSqlSha=diskDataCommon.getSha256(targetDbName+message,conf.platformArch.shaHashLengh);
+                    var writeSqlSha=diskDataCommon.getSha256(reqStorageClusterType.toString()+targetDbName+message,conf.platformArch.shaHashLengh);
                     var userId=0,url='',userGuid='';
                     //save sha message and message and other info into local nodeDB of requestLog
                     var requestLog=undefined;

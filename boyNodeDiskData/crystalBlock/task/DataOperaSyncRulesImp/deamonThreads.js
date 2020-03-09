@@ -50,7 +50,7 @@ DeamonThreads.prototype.crystalTalkingSender= function(){
                 {
                     var crystalClusterInfoRecord=new CrystalClusterInfoRecord();
                         crystalClusterInfoRecord.crystalClusterBlockSelect("1","where crstalNodeRole=0",[""],"", function(rows2){
-                              if(rows2!=undefined)
+                              if(rows2!==undefined&&rows2[0]!==undefined)
                               {
                                     let  currentMasterNodeIp=rows2[0].crystalNodeIp;
                                     let  currentMasterNodePort=rows2[0].crystalNodePort;
@@ -197,11 +197,11 @@ DeamonThreads.prototype.crystalTalkingOperationExecute=function(){
                                 var diskDataNodeInfoRecord=new DiskDataNodeInfoRecord();
                                 diskDataNodeInfoRecord.RequestLogIsActiveUpdate(requestLog);
                                 //add-in log into operationLog
-                                var operationLog=new OperationLog(0,diskDataCommon.getUUID(),null,null,null,diskDataCommon.GetFormatDateFromTimeSpan(Date.now()),conf.platformArch.serviceFor.appId,null,null,null,null,null,null,null,null,null,4,null,
+                                var operationLog=new OperationLog(row.reqStorageClusterType,diskDataCommon.getUUID(),null,null,null,diskDataCommon.GetFormatDateFromTimeSpan(Date.now()),conf.platformArch.serviceFor.appId,null,null,null,null,null,null,null,null,null,4,null,
                                 conf.platformArch.serviceFor.appGuid,null,row.writeSqlSha,row.writeSql);
                                 diskDataNodeInfoRecord.operationLogInsert(operationLog);
                             } 
-                        });
+                        },row.reqStorageClusterType);
                     
                     }
                 }
