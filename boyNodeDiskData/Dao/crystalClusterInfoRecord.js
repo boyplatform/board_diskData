@@ -61,8 +61,8 @@ CrystalClusterInfoRecord.prototype.crystalClusterBlockUpdate=function(crystalClu
 CrystalClusterInfoRecord.prototype.crystalClusterBlockMasterUpdate=function(crystalClusterBlock){
     
     DiskDataDb.dbType = 'mysql';
-    DiskDataDb.mysqlParameter.common.sql ="update crystalClusterBlock set crstalNodeRole=? where crystalNodeGuid=?";
-    DiskDataDb.mysqlParameter.common.params=[crystalClusterBlock.crstalNodeRole,crystalClusterBlock.crystalNodeGuid];
+    DiskDataDb.mysqlParameter.common.sql ="update crystalClusterBlock set crstalNodeRole=? where crystalNodeIp=?";
+    DiskDataDb.mysqlParameter.common.params=[crystalClusterBlock.crstalNodeRole,crystalClusterBlock.crystalNodeIp];
     DiskDataDb.mysqlParameter.common.callBack = function (err, success, affectedRows)
     {
         if (err) {

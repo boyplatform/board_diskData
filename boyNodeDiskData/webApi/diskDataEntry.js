@@ -91,7 +91,7 @@ var server=app.listen(8080,'0.0.0.0',function(){
        
        if(conf.platformArch.runningMode==="realCluster"){
             //订阅当前节点中所有node db中的数据库频道
-            diskDataNodeInfoRecord.showDataBases(function(rows){
+        /*     diskDataNodeInfoRecord.showDataBases(function(rows){
                
                if(rows!==undefined){
                   for(let row of rows){
@@ -99,10 +99,13 @@ var server=app.listen(8080,'0.0.0.0',function(){
                         dataOperaSyncRules_decideAndAction.getWriteOperationMessageStart(row.Database.toString().toUpperCase()+conf.platformArch.serviceFor.reqStorageClusterType.toString(),conf.platformArch.serviceFor.appId,conf.platformArch.serviceFor.appName,conf.platformArch.serviceFor.appGuid,conf.platformArch.serviceFor.reqStorageClusterType);
                   }
                }
-            },conf.platformArch.serviceFor.reqStorageClusterType);
+            },conf.platformArch.serviceFor.reqStorageClusterType); */
              //start operationLog block check processing
-             
-
+             if(conf.platformArch.serviceFor.reqStorageClusterType===0){
+               dataOperaSyncRules_decideAndAction.getWriteOperationMessageStart(conf.diskDataDBConf.dbConfig.database.toUpperCase()+conf.platformArch.serviceFor.reqStorageClusterType.toString(),conf.platformArch.serviceFor.appId,conf.platformArch.serviceFor.appName,conf.platformArch.serviceFor.appGuid,conf.platformArch.serviceFor.reqStorageClusterType);
+             }else if(conf.platformArch.serviceFor.reqStorageClusterType===1){
+               dataOperaSyncRules_decideAndAction.getWriteOperationMessageStart(conf.diskDataDBConf_Mssql.database.toUpperCase()+conf.platformArch.serviceFor.reqStorageClusterType.toString(),conf.platformArch.serviceFor.appId,conf.platformArch.serviceFor.appName,conf.platformArch.serviceFor.appGuid,conf.platformArch.serviceFor.reqStorageClusterType);
+             }
         //订阅非block chain的直接操作
             dataOperaSyncRules_decideAndAction.getWriteOperationMessageStart(conf.platformArch.NonBlockChainSubscribeChannel.toUpperCase()+conf.platformArch.serviceFor.reqStorageClusterType.toString(),conf.platformArch.serviceFor.appId,conf.platformArch.serviceFor.appName,conf.platformArch.serviceFor.appGuid,conf.platformArch.serviceFor.reqStorageClusterType);
       }
