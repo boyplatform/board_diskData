@@ -89,7 +89,7 @@ var server=app.listen(8080,'0.0.0.0',function(){
             })
        },conf.platformArch.DeamonThreadSecRate.forGetCurrentNodeRolePromiseTime);
        
-       if(conf.platformArch.runningMode==="realCluster"){
+       if(conf.platformArch.runningMode==="master"){
             //订阅当前节点中所有node db中的数据库频道
         /*     diskDataNodeInfoRecord.showDataBases(function(rows){
                

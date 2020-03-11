@@ -143,7 +143,9 @@ var platformArch= {
        appGuid:'',
        reqStorageClusterType:0  //0=used to host mysql cluster;1=used to host mssql cluster
      },
-     runningMode:"realCluster",  //mock-for test via API or realCluster-for work with memory cluster together.
+                                 //master--if u want to use this micro-service to host a master biz DB target node of your DB cluster(both for write & read); 
+                                 //slave--if u want to use this micro-service to host a slave biz DB target node of your DB cluster(only to read)
+     runningMode:"master",  
      redisMode:"cluster",
      NonBlockChainSubscribeChannel:"NONBLOCKCHAINWRITE"
 };
