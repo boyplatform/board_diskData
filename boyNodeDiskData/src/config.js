@@ -106,6 +106,8 @@ var redisClusterPoolConfig=[
 ];
 
 var platformArch= {
+
+  
      defaultHttpReqTimeOut:6000,
      masterMandantoryVerifyTimeOut:40,
      shaHashLengh:36,
@@ -125,6 +127,12 @@ var platformArch= {
        forGetCurrentNodeRolePromiseTime:50
      },
      crystalCluster:{
+         CheckSelfPubNetworkIpHttpMode:"https",
+         CheckSelfPubNetworkIpDomainUrl: "api.ipify.org",
+         CheckSelfPubNetworkIpPartialUrl:"/?format=json",
+         SelfPubNetworkIpCacheTime:600,
+         SelfPubNetworkIpCacheRetryRateOnceNetError:30,
+         CrystalClusterNetworkMode:"internet",   //internet=广域网集群/lan=局域网内网集群
         definedOperationLogCheckFailedTimes:3,
         interactProtocolType:0,
         httpDefaultMode:"http",

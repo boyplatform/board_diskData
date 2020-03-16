@@ -10,6 +10,8 @@ const dbg= tag =>debug('${name}:${tag}');
 
 const debg=dbg('utils');
 
+
+
 module.exports.createErrMandatory= param=>'Required parameter: ${param}';
 
 //Abstract the parameters addition to the url request, optsAllowed=opts allowed to be optional url query parameter for each third party web API funtion
@@ -182,3 +184,4 @@ module.exports.apiSimpleRequestWithCallBack= async (httpType,domainUrl,partialUr
     callback(res);
     
 }
+

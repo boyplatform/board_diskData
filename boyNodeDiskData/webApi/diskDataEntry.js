@@ -54,8 +54,12 @@ app.use(bodyParser.urlencoded({extended:false}));
 
 
 //Programe Entry
-var server=app.listen(8080,'0.0.0.0',function(){
+var server=app.listen(8080,'0.0.0.0', function(){
  
+   //internet模式下启动时初始化并缓存本机公网IP
+   if(conf.platformArch.crystalCluster.CrystalClusterNetworkMode==="internet"){
+      diskDataCommon.initCurrentServerPubIpAdress();
+    }
      console.log('Intelligent boy-diskData is running on current crystal node at:'+(new Date()).toLocaleString()," on IP:",diskDataCommon.getCurrentServerIpAdress().trim());
        
      //依赖注入
