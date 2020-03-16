@@ -65,7 +65,7 @@ var getCurrentServerIpAdress= function(){
 var getCurrentServerPubIpAdress= function(callback){
  
      //判断集群网络模式，LAN直接返回''
-     if(conf.platformArch.CrystalClusterNetworkMode==="lan"){
+     if(conf.platformArch.crystalCluster.CrystalClusterNetworkMode==="lan"){
         
          return callback("");
        
@@ -551,7 +551,7 @@ var getCurrentCrystalClusterNodeCount=function(){
   let crystalClusterNodeCount=0;
   var crystalCluster=conf.platformArch.crystalCluster;
   for(let ip in crystalCluster){
-      if(ip.trim()!="httpDefaultMode"&&ip.trim()!="interactProtocolType"&&ip.trim()!="defaultTalkingPort"&&ip.trim()!="crystalTalkingSize"&&ip.trim()!="allowDuplicateOpTalking"&&ip.trim()!="crystalResendTimeout"&&ip.trim()!="definedOperationLogCheckFailedTimes")   //remove non-ip key process
+      if(whetherCrystalNodeItem(ip.trim()))   //remove non-ip key process
       {
           crystalClusterNodeCount++;
       }
