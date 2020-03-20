@@ -11,7 +11,7 @@
     "distribute database",
     "分布式数据"
   ],
-  "homepage": "https://github.com/boyplatform/diskData",
+  "homepage": "https://github.com/boyplatform/board_diskData",
   "ignore": [
     "**/.*",
     "node_modules",

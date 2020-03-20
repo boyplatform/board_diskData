@@ -2,7 +2,7 @@
   "name": "diskdata",
   "version": "1.0.0",
   "description": "diskData,One repo of boy distribute modality platform. Implement web Intelligent & distribute bussiness-data storage functions to host distributed workflow,bussiness logic DB-service nodes into entire platform's diskData cluster and make them work on same page together.",
-  "homepage": "https://github.com/boyplatform/diskData",
+  "homepage": "https://github.com/boyplatform/board_diskData",
   "main": "index.js",
   "files": [
     "index.js",
@@ -18,7 +18,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/boyplatform/diskData.git"
+    "url": "https://github.com/boyplatform/board_diskData.git"
   },
   "keywords": [
     "memcached",
