@@ -42,7 +42,7 @@
     "extend-promise": "^0.0.6",
     "formidable": "^1.1.1",
     "ioredis": "^4.14.1",
-    "lodash": "^4.17.11",
+    "lodash": "^4.17.19",
     "log4js": "^5.2.2",
     "memcached": "^2.2.2",
     "mssql": "^4.0.4",
