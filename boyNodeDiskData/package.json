@@ -43,7 +43,7 @@
     "formidable": "^1.1.1",
     "ioredis": "^4.14.1",
     "lodash": "^4.17.11",
-    "log4js": "^5.2.2",
+    "log4js": "^6.4.0",
     "memcached": "^2.2.2",
     "mssql": "^4.0.4",
     "mysql": "^2.11.1",
